@@ -1,0 +1,23 @@
+{% extends 'boards/base.html' %}
+
+{% block body %}
+    <h1>EDIT</h1>
+    <!--<form action="/boards/{{ board.id }}/update/" method="post">-->
+    <!--<form action="{# url 'boards:update' board.id #}" method="post">-->
+        <form action="{% url 'boards:edit' board.id %}" method="post" enctype="multipart/form-data"> <!-- RESTful 처리 -->
+        {% csrf_token %}
+        <label for="title">Title</label><br />
+        <input name="title" id="title" type="text" value="{{ board.title }}"/><br />  <!-- value="{{ board.title }} : 기존에 작성한거 보여줌 -->
+        <label for="content">Content</label><br />
+        <textarea name="content" id="content">{{ board.content }}</textarea><br />
+        <input type="file" name="image" accept="image/*"><br/>
+        <input class="btn btn-success" type="submit" value="제출하기" />
+    </form>
+
+    <!--<a href="/boards/">[뒤로가기]</a>-->
+    <!--<form action="/boards/" method="post">-->
+    <form action="{% url 'boards:index' %}" method="post">
+        {% csrf_token %}    <!-- 우리 웹 서버에서 어떤 작성이 일어날때는 csrf_token이 필요하다라는 의미 // 보안상 필요 -->
+        <input class="btn btn-secondary" type="submit" value="뒤로가기"/>
+    </form>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'boards/base.html' %}
+
+{% block body %}
+    <h1>NEW</h1>
+    <!--<form action="/boards/create/" method="post">-->
+    <!--<form action="{# url 'boards:create' #}" method="post">-->
+    <form action="{% url 'boards:new' %}" method="post" enctype="multipart/form-data"> <!-- RESTful 처리 -->
+        {% csrf_token %}
+        <label for="title">Title</label><br />
+        <input name="title" id="title" type="text" /><br />
+        <label for="content">Content</label><br />
+        <textarea name="content" id="content"></textarea><br />
+        <input type="file" name="image" accept="image/*"/><br />
+        <input type="submit" />
+    </form>
+    <!--<a href="/boards/">BACK</a>-->
+    <a href="{% url 'boards:index' %}">BACK</a>
+{% endblock %}
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>boards - new</title>-->
+<!--</head>-->
+<!--<body>-->
+
+    <!--<h1>NEW</h1>-->
+    <!--<form action="/boards/create/">     &lt;!&ndash; 아래의 정보를 create로 받을 수 있도록 action &ndash;&gt;-->
+        <!--타이틀 : <input type="text", name="title" />-->
+        <!--내용 : <textarea name="content" id="" cols="30" rows="10"></textarea>-->
+        <!--<input type="submit">-->
+    <!--</form>-->
+
+<!--</body>-->
+<!--</html>-->
+
+

@@ -1,0 +1,28 @@
+{% extends 'boards/base.html' %}
+
+{% block body %}
+    <h1>Welcome to boards</h1>
+    <hr />
+    {% for board in boards %}
+        <p>글 번호 : [{{ board.id }}]ㅤㅤ ㅤㅤ ㅤㅤ 글 제목 : {{ board.title }}ㅤㅤㅤ ㅤ ㅤㅤ 글 내용 : {{ board.content }} </p>
+        <!--<a href="/boards/{{ board.id }}/">[상세글 보러가기]</a>-->
+        <a href="{% url 'boards:detail' board.id %}">[상세글 보러가기]</a>
+        <hr />
+    {% endfor %}
+
+    <!--<a href="/boards/new/">새로운 글 작성하러 가기</a>-->
+    <a href="{% url 'boards:new' %}">새로운 글 작성하러 가기</a>
+{% endblock %}
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>boards - index</title>-->
+<!--</head>-->
+<!--<body>-->
+
+    <!--<h1>Welcome to Boards page</h1>-->
+
+<!--</body>-->
+<!--</html>-->
